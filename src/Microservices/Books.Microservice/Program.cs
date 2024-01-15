@@ -1,11 +1,21 @@
+using Middleware;
+using Books.Microservice.Endpoints;
+using Books.Microservice.Repository;
+using SolON.API.Authentication.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthorization();
+builder.Services.AddJwt(opts => builder.Configuration.GetSection("Jwt").Bind(opts));
+builder.Services.AddMongoDb(builder.Configuration);
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -14,9 +24,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.Run();
+app.UseAuthorization();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+app.RegisterBookEndpoints();
+app.RegisterAuthorEndpoints();
+
+app.Run();

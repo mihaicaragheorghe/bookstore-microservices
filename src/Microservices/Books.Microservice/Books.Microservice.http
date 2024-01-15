@@ -1,6 +1,6 @@
-@Books.Microservice_HostAddress = http://localhost:5130
+@Host = http://localhost:5130
 
-GET {{Books.Microservice_HostAddress}}/weatherforecast/
+GET {{Host}}/api/books/
 Accept: application/json
 
 ###
