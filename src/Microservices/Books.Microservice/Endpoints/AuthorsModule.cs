@@ -8,30 +8,37 @@ public static class AuthorsModule
 {
     public static void RegisterAuthorEndpoints(this WebApplication app)
     {
-        app.MapGet("/authors", async (IAuthorRepository repository) =>
+        app.MapGet("/api/authors", async (IAuthorRepository repository) =>
         {
             return Results.Ok(await repository.GetAuthorsAsync());
-        });
+        })
+        .RequireAuthorization()
+        .Produces<IEnumerable<Author>>();
 
-        app.MapGet("/authors/{id}", async (Guid id, IAuthorRepository repository) =>
+        app.MapGet("/api/authors/{id}", async (Guid id, IAuthorRepository repository) =>
         {
             var author = await repository.GetAuthorAsync(id);
 
             return author is null ? Results.NotFound() : Results.Ok(author);
-        });
+        })
+        .RequireAuthorization()
+        .Produces<Author>();
 
-        app.MapPost("/authors", async (Author author, IAuthorRepository repository) =>
+        app.MapPost("/api/authors", async (Author author, IAuthorRepository repository) =>
         {
             return Results.Ok(await repository.AddAuthorAsync(author));
-        });
+        })
+        .RequireAuthorization()
+        .Produces<Author>();
 
-        app.MapDelete("/authors/{id}", async (Guid id, IAuthorRepository repository) =>
+        app.MapDelete("/api/authors/{id}", async (Guid id, IAuthorRepository repository) =>
         {
             var author = await repository.GetAuthorAsync(id);
             
             if (author is null) return Results.NotFound();
 
             return await repository.DeleteAuthorAsync(id) ? Results.Ok() : Results.Problem();
-        });
+        })
+        .RequireAuthorization();
     }
 }

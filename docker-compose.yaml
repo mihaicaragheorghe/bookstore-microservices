@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   mongo:
     image: mongo
@@ -5,21 +7,21 @@ services:
       - "27017:27017"
 
   backendgw:
-  build:
-    context: .
-    dockerfile: src/Gateways/BackendGateway/Dockerfile
-  ports:
-    - 5111:80
-  depends_on:
-    - mongo
-    - identity
+    build:
+      context: .
+      dockerfile: src/Gateways/BackendGateway/Dockerfile
+    ports:
+      - "5111:8080"
+    depends_on:
+      - mongo
+      - identity
 
   identity:
     build:
       context: .
       dockerfile: src/Microservices/Identity.Microservice/Dockerfile
     ports:
-      - 5025:80
+      - "5025:8080"
     depends_on:
       - mongo
 
@@ -28,7 +30,7 @@ services:
       context: .
       dockerfile: src/Microservices/Books.Microservice/Dockerfile
     ports:
-      - 5130:80
+      - "5130:8080"
     depends_on:
       - mongo
       - identity
@@ -38,7 +40,7 @@ services:
       context: .
       dockerfile: src/Microservices/Orders.Microservice/Dockerfile
     ports:
-      - 5019:80
+      - "5019:8080"
     depends_on:
       - mongo
       - identity

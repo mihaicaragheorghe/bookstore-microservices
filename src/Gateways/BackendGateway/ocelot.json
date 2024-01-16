@@ -1,12 +1,12 @@
 {
     "Routes": [
         {
-            "DownstreamPathTemplate": "/books",
+            "DownstreamPathTemplate": "/api/books",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/books",
@@ -19,12 +19,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/books/{id}",
+            "DownstreamPathTemplate": "/api/books/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/books/{id}",
@@ -37,12 +37,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/books/author/{id}",
+            "DownstreamPathTemplate": "/api/books/author/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/books/author/{id}",
@@ -55,12 +55,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/books",
+            "DownstreamPathTemplate": "/api/books",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/books",
@@ -73,12 +73,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/books/{id}",
+            "DownstreamPathTemplate": "/api/books/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/books/{id}",
@@ -91,12 +91,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/authors",
+            "DownstreamPathTemplate": "/api/authors",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/authors",
@@ -109,12 +109,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/authors/{id}",
+            "DownstreamPathTemplate": "/api/authors/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/authors/{id}",
@@ -127,12 +127,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/authors",
+            "DownstreamPathTemplate": "/api/authors",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/authors",
@@ -145,12 +145,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/authors/{id}",
+            "DownstreamPathTemplate": "/api/authors/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5130
+                    "Host": "books",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/authors/{id}",
@@ -163,12 +163,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/orders/user/{id}",
+            "DownstreamPathTemplate": "/api/orders/user/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5019
+                    "Host": "orders",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/orders/user/{id}",
@@ -181,12 +181,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/orders/{id}",
+            "DownstreamPathTemplate": "/api/orders/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5019
+                    "Host": "orders",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/orders/{id}",
@@ -199,12 +199,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/orders",
+            "DownstreamPathTemplate": "/api/orders",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5019
+                    "Host": "orders",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/orders",
@@ -217,12 +217,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/orders/{id}",
+            "DownstreamPathTemplate": "/api/orders/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5019
+                    "Host": "orders",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/orders/{id}",
@@ -235,12 +235,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/orders/{id}",
+            "DownstreamPathTemplate": "/api/orders/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5019
+                    "Host": "orders",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/orders/{id}",
@@ -253,12 +253,12 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/identity/login",
+            "DownstreamPathTemplate": "/api/identity/login",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5025
+                    "Host": "identity",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/identity/login",
@@ -267,12 +267,12 @@
             ]
         },
         {
-            "DownstreamPathTemplate": "/identity/register",
+            "DownstreamPathTemplate": "/api/identity/register",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5025
+                    "Host": "identity",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/identity/register",
@@ -281,12 +281,12 @@
             ]
         },
         {
-            "DownstreamPathTemplate": "/identity/validate",
+            "DownstreamPathTemplate": "/api/identity/validate",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5025
+                    "Host": "identity",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/identity/validate",

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthorization();
 builder.Services.AddJwt(opts => builder.Configuration.GetSection("Jwt").Bind(opts));
@@ -23,7 +24,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-
+app.UseAuthentication();
+app.UseHealthChecks("/health");
 app.RegisterUserEndpoints();
 
 app.Run();
