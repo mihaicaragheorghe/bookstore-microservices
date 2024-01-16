@@ -7,7 +7,7 @@ public static class OrdersModule
 {
     public static void RegisterOrderEndpoints(this WebApplication app)
     {
-        app.MapGet("/orders", async (Guid userId, IOrderRepository repository) =>
+        app.MapGet("/orders/user/{userId}", async (Guid userId, IOrderRepository repository) =>
         {
             var orders = await repository.GetByUserIdAsync(userId);
             return Results.Ok(orders);

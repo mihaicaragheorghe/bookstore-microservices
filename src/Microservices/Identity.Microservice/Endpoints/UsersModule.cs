@@ -10,7 +10,7 @@ public static class UsersModule
 {
     public static void RegisterUserEndpoints(this WebApplication app)
     {
-        app.MapPost("/login", async (LoginRequest request, 
+        app.MapPost("/identity/login", async (LoginRequest request, 
             IUserRepository repository, IJwtTokenGenerator tokenGenerator) =>
         {
             var user = await repository.GetUserAsync(request.Email);
@@ -30,7 +30,7 @@ public static class UsersModule
         .Produces<LoginResponse>()
         .AllowAnonymous();
 
-        app.MapPost("/register", async (RegisterRequest request,
+        app.MapPost("/identity/register", async (RegisterRequest request,
             IUserRepository repository, IJwtTokenGenerator tokenGenerator) =>
         {
             if (await repository.GetUserAsync(request.Email) is not null) return Results.Conflict();
@@ -56,7 +56,7 @@ public static class UsersModule
         .Produces<RegisterResponse>()
         .AllowAnonymous();
 
-        app.MapGet("/validate", (ClaimsPrincipal user) =>
+        app.MapGet("/identity/validate", (ClaimsPrincipal user) =>
         {
             if (user is null) return Results.Unauthorized();
 
