@@ -1,5 +1,5 @@
-using Middleware;
 using Orders.Microservice.Repository;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 

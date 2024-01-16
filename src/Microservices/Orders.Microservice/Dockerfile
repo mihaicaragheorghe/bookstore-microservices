@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY src/ .
+COPY nuget.config /nuget.config
+RUN dotnet restore Microservices/Orders.Microservice/Orders.Microservice.csproj
+
+FROM build AS publish
+WORKDIR /src/Microservices/Orders.Microservice
+RUN dotnet publish Orders.Microservice.csproj -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Orders.Microservice.dll"]

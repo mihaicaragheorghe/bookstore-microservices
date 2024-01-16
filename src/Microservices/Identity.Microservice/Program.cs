@@ -1,6 +1,6 @@
 using Identity.Microservice.Endpoints;
 using Identity.Microservice.Repository;
-using Middleware;
+using Shared;
 using SolON.API.Authentication.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
-using Middleware;
 using Books.Microservice.Endpoints;
 using Books.Microservice.Repository;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,0 +1,31 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+  identity:
+    build:
+      context: .
+      dockerfile: src/Microservices/Identity.Microservice/Dockerfile
+    ports:
+      - 5025:80
+    depends_on:
+      - mongo
+  books:
+    build:
+      context: .
+      dockerfile: src/Microservices/Books.Microservice/Dockerfile
+    ports:
+      - 5130:80
+    depends_on:
+      - mongo
+      - identity
+  orders:
+    build:
+      context: .
+      dockerfile: src/Microservices/Orders.Microservice/Dockerfile
+    ports:
+      - 5019:80
+    depends_on:
+      - mongo
+      - identity

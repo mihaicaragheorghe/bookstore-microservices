@@ -1,4 +1,4 @@
-namespace Middleware;
+namespace Shared.Models;
 
 public class MongoDbOptions
 {

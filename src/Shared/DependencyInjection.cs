@@ -2,8 +2,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Shared.Models;
 
-namespace Middleware;
+namespace Shared;
 
 public static class DependencyInjection
 {
