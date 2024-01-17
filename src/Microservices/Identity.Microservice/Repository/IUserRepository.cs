@@ -4,8 +4,8 @@ namespace Identity.Microservice.Repository;
 
 public interface IUserRepository
 {
-    Task<User?> GetUserAsync(Guid id);
-    Task<User?> GetUserAsync(string email);
+    Task<User?> GetUserByIdAsync(string id);
+    Task<User?> GetUserByEmailAsync(string email);
     Task<User> AddUserAsync(User user);
-    Task<bool> DeleteUserAsync(Guid id);
+    Task<bool> DeleteUserAsync(string id);
 }

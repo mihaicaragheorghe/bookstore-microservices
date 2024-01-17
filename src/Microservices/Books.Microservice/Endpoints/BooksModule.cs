@@ -1,3 +1,4 @@
+using Books.Microservice.Contracts;
 using Books.Microservice.Models;
 using Books.Microservice.Repository;
 
@@ -14,7 +15,7 @@ public static class BooksModule
         .RequireAuthorization()
         .Produces<IEnumerable<Book>>();
         
-        app.MapGet("/api/books/{id}", async (Guid id, IBookRepository repository) =>
+        app.MapGet("/api/books/{id}", async (string id, IBookRepository repository) =>
         {
             var book = await repository.GetBookAsync(id);
 
@@ -23,7 +24,7 @@ public static class BooksModule
         .RequireAuthorization()
         .Produces<Book>();
 
-        app.MapGet("/api/books/author/{id}", async (Guid id, IBookRepository repository) =>
+        app.MapGet("/api/books/author/{id}", async (string id, IBookRepository repository) =>
         {
             var books = await repository.GetBooksAsync(id);
 
@@ -32,14 +33,16 @@ public static class BooksModule
         .RequireAuthorization()
         .Produces<IEnumerable<Book>>();
 
-        app.MapPost("/api/books", async (Book book, IBookRepository repository) =>
+        app.MapPost("/api/books", async (CreateBookRequest request, IBookRepository repository) =>
         {
+            var book = new Book(request.AuthorId, request.Title, request.Description);
+
             return Results.Ok(await repository.AddBookAsync(book));
         })
         .RequireAuthorization()
         .Produces<Book>();
 
-        app.MapDelete("/api/books/{id}", async (Guid id, IBookRepository repository) =>
+        app.MapDelete("/api/books/{id}", async (string id, IBookRepository repository) =>
         {
             var book = await repository.GetBookAsync(id);
             

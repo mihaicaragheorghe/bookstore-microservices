@@ -1,3 +1,4 @@
+using Books.Microservice.Contracts;
 using Books.Microservice.Models;
 using Books.Microservice.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -15,7 +16,7 @@ public static class AuthorsModule
         .RequireAuthorization()
         .Produces<IEnumerable<Author>>();
 
-        app.MapGet("/api/authors/{id}", async (Guid id, IAuthorRepository repository) =>
+        app.MapGet("/api/authors/{id}", async (string id, IAuthorRepository repository) =>
         {
             var author = await repository.GetAuthorAsync(id);
 
@@ -24,14 +25,14 @@ public static class AuthorsModule
         .RequireAuthorization()
         .Produces<Author>();
 
-        app.MapPost("/api/authors", async (Author author, IAuthorRepository repository) =>
+        app.MapPost("/api/authors", async (CreateAuthorRequest request, IAuthorRepository repository) =>
         {
-            return Results.Ok(await repository.AddAuthorAsync(author));
+            return Results.Ok(await repository.AddAuthorAsync(new Author(request.Name)));
         })
         .RequireAuthorization()
         .Produces<Author>();
 
-        app.MapDelete("/api/authors/{id}", async (Guid id, IAuthorRepository repository) =>
+        app.MapDelete("/api/authors/{id}", async (string id, IAuthorRepository repository) =>
         {
             var author = await repository.GetAuthorAsync(id);
             

@@ -1,18 +1,29 @@
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Identity.Microservice.Models;
 
 public class User
 {
+    public static readonly string CollectionName = nameof(User);
+
     [BsonId]
-    public Guid Id { get; init; }
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; init; } = null!;
 
-    public string Email { get; init; } = string.Empty;
+    public string Email { get; init; } = null!;
 
-    public string Password { get; init; } = string.Empty;
+    public string Password { get; init; } = null!;
 
-    public string Name { get; init; } = string.Empty;
+    public string Name { get; init; } = null!;
 
-    [BsonIgnore]
-    internal const string CollectionName = "Users";
+    public User() { }
+
+    public User(string email, string password, string name)
+    {
+        Id = ObjectId.GenerateNewId().ToString();
+        Email = email;
+        Password = password;
+        Name = name;
+    }
 }

@@ -10,7 +10,7 @@ public class AuthorRepository(IMongoDatabase db) : IAuthorRepository
     public async Task<IEnumerable<Author>> GetAuthorsAsync() =>
         await _authors.Find(author => true).ToListAsync();
 
-    public async Task<Author?> GetAuthorAsync(Guid id) =>
+    public async Task<Author?> GetAuthorAsync(string id) =>
         await _authors.Find(author => author.Id == id).SingleOrDefaultAsync();
 
     public async Task<Author> AddAuthorAsync(Author author)
@@ -25,7 +25,7 @@ public class AuthorRepository(IMongoDatabase db) : IAuthorRepository
         return result.IsAcknowledged ? author : null;
     }
 
-    public async Task<bool> DeleteAuthorAsync(Guid id)
+    public async Task<bool> DeleteAuthorAsync(string id)
     {
         var result = await _authors.DeleteOneAsync(author => author.Id == id);
         return result.IsAcknowledged && result.DeletedCount > 0;

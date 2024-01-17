@@ -1,6 +1,6 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using SolON.API.Authentication.Extensions;
+using Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +9,9 @@ builder.Configuration.AddJsonFile("ocelot.Development.json", optional: true, rel
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddProblemDetails();
 builder.Services.AddHealthChecks();
-builder.Services.AddJwt(opts => builder.Configuration.Bind("Jwt", opts));
+builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddOcelot(builder.Configuration);
 
 builder.Services.AddCors(opts =>
@@ -31,15 +31,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-else
-{
-    app.UseHttpsRedirection();
-}
 
 app.UseHealthChecks("/health");
-app.UseCors("CorsPolicy");
+
+app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseOcelot().Wait();
+
+app.UseCors("CorsPolicy");
+
+await app.UseOcelot();
 
 app.Run();

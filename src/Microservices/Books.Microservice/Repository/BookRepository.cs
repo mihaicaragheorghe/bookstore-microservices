@@ -10,10 +10,10 @@ public class BookRepository(IMongoClient db) : IBookRepository
     public async Task<IEnumerable<Book>> GetBooksAsync() =>
         await _books.Find(book => true).ToListAsync();
 
-    public async Task<Book?> GetBookAsync(Guid id) =>
+    public async Task<Book?> GetBookAsync(string id) =>
         await _books.Find(book => book.Id == id).SingleOrDefaultAsync();
 
-    public async Task<IEnumerable<Book>> GetBooksAsync(Guid authorId) =>
+    public async Task<IEnumerable<Book>> GetBooksAsync(string authorId) =>
         await _books.Find(book => book.AuthorId == authorId).ToListAsync();
 
     public async Task<Book> AddBookAsync(Book book)
@@ -28,7 +28,7 @@ public class BookRepository(IMongoClient db) : IBookRepository
         return result.IsAcknowledged ? book : null;
     }
 
-    public async Task<bool> DeleteBookAsync(Guid id)
+    public async Task<bool> DeleteBookAsync(string id)
     {
         var result = await _books.DeleteOneAsync(book => book.Id == id);
         return result.IsAcknowledged && result.DeletedCount > 0;

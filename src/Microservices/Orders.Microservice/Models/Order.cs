@@ -6,15 +6,25 @@ namespace Orders.Microservice.Models;
 public class Order
 {
     [BsonId]
-    public Guid Id { get; init; }
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; init; } = null!;
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public Guid UserId { get; init; }
+    public string UserId { get; init; } = null!;
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public Guid BookId { get; init; }
+    public string BookId { get; init; } = null!;
     
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 
     public DateTime? UpdatedAt { get; set; }
+
+    public Order() { }
+
+    public Order(string userId, string bookId)
+    {
+        Id = ObjectId.GenerateNewId().ToString();
+        UserId = userId;
+        BookId = bookId;
+    }
 }
