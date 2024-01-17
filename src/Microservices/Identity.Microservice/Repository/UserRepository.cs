@@ -22,6 +22,12 @@ public class UserRepository(IMongoDatabase db) : IUserRepository
     public async Task<bool> DeleteUserAsync(string id)
     {
         var result = await _users.DeleteOneAsync(u => u.Id == id);
-        return result.DeletedCount > 0;
+        return result.IsAcknowledged && result.DeletedCount > 0;
+    }
+
+    public async Task<bool> UpdateUserAsync(User user)
+    {
+        var result = await _users.ReplaceOneAsync(u => u.Id == user.Id, user);
+        return result.IsAcknowledged && result.ModifiedCount > 0;
     }
 }

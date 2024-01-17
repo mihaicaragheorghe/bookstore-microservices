@@ -17,7 +17,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddMongoDb(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<MongoDbOptions>(configuration.GetSection("MongoDb"));
+        services.Configure<MongoDbOptions>(configuration.GetSection(MongoDbOptions.SectionName));
         services.AddSingleton<IMongoClient, MongoClient>(sp =>
         {
             var options = sp.GetRequiredService<IOptions<MongoDbOptions>>();

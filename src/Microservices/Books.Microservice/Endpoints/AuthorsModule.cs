@@ -18,12 +18,12 @@ public static class AuthorsModule
 
         app.MapGet("/api/authors/{id}", async (string id, IAuthorRepository repository) =>
         {
-            var author = await repository.GetAuthorAsync(id);
+            var author = await repository.GetAuthorWithBooksAsync(id);
 
             return author is null ? Results.NotFound() : Results.Ok(author);
         })
         .RequireAuthorization()
-        .Produces<Author>();
+        .Produces<AuthorBooksAggregate>();
 
         app.MapPost("/api/authors", async (CreateAuthorRequest request, IAuthorRepository repository) =>
         {
