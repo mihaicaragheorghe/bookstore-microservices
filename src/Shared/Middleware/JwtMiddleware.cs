@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Bson;
-using Shared.Abstractions;
+using Shared.Authentication.Abstractions;
 
 namespace Shared.Middleware;
 

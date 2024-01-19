@@ -1,4 +1,4 @@
-namespace Shared.Abstractions
+namespace Shared.Authentication.Abstractions
 {
     public interface IJwtBuilder
     {

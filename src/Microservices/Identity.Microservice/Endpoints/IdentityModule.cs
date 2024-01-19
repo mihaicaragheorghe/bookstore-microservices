@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Identity.Microservice.Contracts;
 using Identity.Microservice.Models;
 using Identity.Microservice.Repository;
-using Shared.Abstractions;
+using Shared.Authentication.Abstractions;
 
 namespace Identity.Microservice.Endpoints;
 

@@ -3,10 +3,10 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Shared.Abstractions;
-using Shared.Models;
+using Shared.Authentication.Abstractions;
+using Shared.Authentication.Models;
 
-namespace Shared.Services;
+namespace Shared.Authentication.Services;
 
 public class JwtBuilder(IOptions<JwtOptions> options) : IJwtBuilder
 {

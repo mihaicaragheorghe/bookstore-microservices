@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Http;
-using Shared.Abstractions;
+using Shared.Authentication.Abstractions;
 
-namespace Shared.Services;
+namespace Shared.Authentication.Services;
 
-public class UserIdentityProvider(IHttpContextAccessor httpContextAccessor) 
+public class UserIdentityProvider(IHttpContextAccessor httpContextAccessor)
     : IUserIdentityProvider
 {
     public Guid GetUserId()
