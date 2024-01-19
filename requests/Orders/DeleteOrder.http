@@ -1,0 +1,6 @@
+@host = http://localhost:5111
+@token = your_token
+@id = 1
+
+DELETE {{host}}/orders/{{id}}
+Authorization: Bearer {{token}}

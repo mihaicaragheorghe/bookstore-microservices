@@ -1,0 +1,6 @@
+@host = http://localhost:5111
+@token = your_token
+@userId = your_user_id
+
+GET {{host}}/orders/user/{{userId}}
+Authorization: Bearer {{token}}

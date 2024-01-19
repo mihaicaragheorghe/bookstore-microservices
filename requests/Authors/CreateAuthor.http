@@ -1,0 +1,10 @@
+@host = http://localhost:5111
+@token = your_token
+
+POST {{host}}/authors
+Content-Type: application/json
+Authorization: Bearer @token
+
+{
+  "name": "New Author"
+}
