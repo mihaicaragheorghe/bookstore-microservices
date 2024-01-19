@@ -1,6 +1,4 @@
-@host = http://localhost:5111
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWEzYTIzZTk3ZTQ0YzQ5N2NiZGNiZSIsImV4cCI6MTcwNTY2NDQ4Nn0.Yszy6Z3HLzwx3OTiDFRmF8lDF0ccw9OQDZozUndqMfA
-@id = 65aa46b3fa223d5dbfdb2c8e
+@id = 65aa5697683cd15dc2f84795
 
 GET {{host}}/books/{{id}}
 Authorization: Bearer {{token}}
