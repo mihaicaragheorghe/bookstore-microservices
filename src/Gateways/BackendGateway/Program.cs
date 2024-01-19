@@ -1,18 +1,22 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Serilog;
 using Shared;
+using Shared.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile("ocelot.Development.json", optional: true, reloadOnChange: true);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddProblemDetails();
+builder.Host.UseSerilog((context, config) =>
+    config.ReadFrom.Configuration(context.Configuration));
+
 builder.Services.AddHealthChecks();
+builder.Services.AddProblemDetails();
 builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Services.AddCors(opts =>
 {
@@ -26,12 +30,8 @@ builder.Services.AddCors(opts =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseExceptionHandler();
 app.UseHealthChecks("/health");
 
 app.UseHttpsRedirection();
