@@ -1,0 +1,5 @@
+@host = http://localhost:5111
+@token = your_token
+
+GET {{host}}/books
+Authorization: Bearer {{token}}

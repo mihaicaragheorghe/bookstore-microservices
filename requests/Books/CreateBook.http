@@ -1,0 +1,12 @@
+@host = http://localhost:5111
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWEzYTIzZTk3ZTQ0YzQ5N2NiZGNiZSIsImV4cCI6MTcwNTY2MTYwMX0.c-ECoLKLuSYwUdIvtRrU_JYv_-UVh6sxN0MkN68Aj_8
+
+POST {{host}}/books
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "authorId": "65aa39d01d1692c54fabae02",
+    "title": "Crime and punishment",
+    "description": "cool book, i should finish it"
+}

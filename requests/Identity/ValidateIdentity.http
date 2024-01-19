@@ -1,0 +1,5 @@
+@host = http://localhost:5111
+@token = 1234567890
+@email = dwight@test.com
+
+GET {{host}}/identity/validate?email={{email}}&token={{token}}

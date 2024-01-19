@@ -2,11 +2,11 @@
 ---
 
 ### Next
+- [ ] Migrate to vertical slice
 - [ ] Validation using FluentValidation
 - [ ] Use CQRS w/ MediatR
 - [ ] Write unit tests using FluentAssertion, xUnit & Moq
 - [ ] Use gRPC
-- [ ] Migrate to vertical slice
 
 ### Done
 - [x] Use ocelot

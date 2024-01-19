@@ -1,0 +1,11 @@
+@host = http://localhost:5111
+@token = your_token
+
+POST {{host}}/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userId": "user_id",
+  "bookId": "book_id"
+}
