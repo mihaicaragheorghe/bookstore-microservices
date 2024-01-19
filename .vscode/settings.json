@@ -1,0 +1,11 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWE1NTQzNjQ2NTQ2NzE4ZTJhMThmOSIsImV4cCI6MTcwNTY2NTU5MX0.nHMvPg_JLTqxojXhKI1q3_3N0lG_3ENI5TGWqQVlzVE",
+            "userId": "65aa5543646546718e2a18f9",
+        },
+        "dev": {
+            "host": "http://localhost:5111",
+        }
+    }
+}

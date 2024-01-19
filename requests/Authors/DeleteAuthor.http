@@ -1,7 +1,5 @@
-@host = http://localhost:5111
-@token = your_token
-@id = 1
+@id = 65aa564c683cd15dc2f84794
 
 ### Gateway
 DELETE {{host}}/authors/{{id}}
-Authorization: Bearer @token
+Authorization: Bearer {{token}}

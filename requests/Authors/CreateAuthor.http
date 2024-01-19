@@ -1,10 +1,7 @@
-@host = http://localhost:5111
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWEzYTIzZTk3ZTQ0YzQ5N2NiZGNiZSIsImV4cCI6MTcwNTY2NDQ4Nn0.Yszy6Z3HLzwx3OTiDFRmF8lDF0ccw9OQDZozUndqMfA
-
 POST {{host}}/authors
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "New Author"
+  "name": "Fyodor Dostoevsky"
 }
