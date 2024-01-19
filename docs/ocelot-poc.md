@@ -1,12 +1,14 @@
 # Proof of Concept: Implementing Ocelot in Microservices Architecture
+
 ---
 
-**Brief Overview** 
+**Brief Overview**
 Ocelot is an open-source API Gateway built for .NET applications. It primarily acts as a reverse proxy, routing requests to various microservices.
 
 Designed with simplicity in mind, it integrates seamlessly with ASP.NET Core and offers a range of features beneficial for microservices architectures.
 
-# Features
+## Features
+
 ---
 
 1. **Routing**: Ocelot provides dynamic routing capabilities, directing requests to the appropriate microservice.
@@ -16,28 +18,32 @@ Designed with simplicity in mind, it integrates seamlessly with ASP.NET Core and
 5. **Caching**: Capable of caching responses to improve performance and reduce load.
 6. **Rate Limiting and QoS**: Ensures fair resource usage and maintains quality of service.
 
-# Comparison with nginx
+## Comparison with nginx
+
 ---
 
 - **Functionality**: Unlike Nginx, which is primarily a web server with reverse proxy capabilities, Ocelot is a dedicated API Gateway tailored for .NET applications.
 
 - **Flexibility in Microservices**: Ocelot is more focused on microservices patterns, offering features like service discovery which are crucial in such architectures.
 
-# Performance
+## Performance
+
 ---
 
 - **Efficiency in .NET Environments**: Ocelot, being a .NET-based gateway, performs optimally in .NET ecosystems.
 - **Resource Utilization**: It's lightweight and requires fewer resources compared to more general-purpose proxies like Nginx.
 - **Scalability**: Easily scalable within a microservices architecture, facilitating efficient handling of increased loads.
 
-# Setup & Complexity
+## Setup & Complexity
+
 ---
 
 - **Ease of Setup**: Ocelot's integration with ASP.NET Core simplifies the setup process. Configuration is managed via JSON files, making it straightforward to use.
 - **Learning Curve**: While it requires some understanding of .NET and microservices, the learning curve is not steep.
 - **Customization**: Offers the flexibility to customize routing, security, and other features as per project requirements.
 
-# Sample usage
+## Sample usage
+
 ---
 
 To set up Ocelot, you'll start by adding it to an ASP.NET Core application.
@@ -60,7 +66,8 @@ await app.UseOcelot();
 
 - **Step 4**: Add a configuration file `ocelot.json` to define routes, load balancing, etc.
 
-#### Routing configuration
+### Routing configuration
+
 In `ocelot.json`, define routing rules to forward incoming HTTP requests to appropriate microservices.
 
 ``` json
@@ -129,14 +136,14 @@ In `ocelot.json`, define routing rules to forward incoming HTTP requests to appr
 }
 ```
 
-#### Authentication and Authorization
+### Authentication and Authorization
 
 Ocelot can integrate with ASP.NET Core's authentication and authorization mechanisms.
 
 - **Setup Authentication**: In `Program.cs`, configure authentication services.
 - **Define Authentication Requirements**: In `ocelot.json`, specify authentication requirements for each route.
 
-#### Load Balancing
+### Load Balancing
 
 Ocelot supports multiple load balancing strategies like Round Robin, Least Connection, etc.
 
@@ -148,7 +155,8 @@ Ocelot supports multiple load balancing strategies like Round Robin, Least Conne
 }
 ```
 
-#### Rate Limiting and QoS
+### Rate Limiting and QoS
+
 To prevent abuse and ensure fair usage, you can set up rate limiting.
 
 - **Configure Rate Limiting**: In `ocelot.json`, define rate limiting rules.
@@ -168,7 +176,8 @@ To prevent abuse and ensure fair usage, you can set up rate limiting.
 ]
 ```
 
-# Conclusion
+## Conclusion
+
 ---
 
 Ocelot serves as an efficient and customizable API Gateway, particularly suited for .NET-based microservices architectures. Its focused approach on routing, security, and service aggregation, combined with ease of configuration, makes it an excellent choice for modern application development. While different in scope and functionality from tools like Nginx, Ocelot holds its unique position in the microservices realm, especially within the .NET ecosystem.

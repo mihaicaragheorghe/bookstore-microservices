@@ -10,7 +10,11 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 builder.Configuration.AddJsonFile("ocelot.Development.json", optional: true, reloadOnChange: true);
 
 builder.Host.UseSerilog((context, config) =>
-    config.ReadFrom.Configuration(context.Configuration));
+{
+    config.ReadFrom.Configuration(context.Configuration);
+    config.Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName);
+    config.Enrich.WithProperty("Version", context.Configuration["Version"]);
+});
 
 builder.Services.AddHealthChecks();
 builder.Services.AddProblemDetails();
