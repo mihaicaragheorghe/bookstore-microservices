@@ -7,7 +7,11 @@ using Shared.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, config) =>
-    config.ReadFrom.Configuration(context.Configuration));
+{
+    config.ReadFrom.Configuration(context.Configuration);
+    config.Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName);
+    config.Enrich.WithProperty("Version", context.Configuration["Version"]);
+});
 
 builder.Services.AddPresentation();
 builder.Services.AddJwt(builder.Configuration);

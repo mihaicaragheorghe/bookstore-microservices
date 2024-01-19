@@ -1,14 +1,15 @@
 # Roadmap
----
 
-### Next
+## Next
+
 - [ ] Migrate to vertical slice
-- [ ] Validation using FluentValidation
 - [ ] Use CQRS w/ MediatR
+- [ ] Validation using FluentValidation
 - [ ] Write unit tests using FluentAssertion, xUnit & Moq
 - [ ] Use gRPC
 
-### Done
+## Done
+
 - [x] Use ocelot
 - [x] Use MongoDb
 - [x] Use JWT
