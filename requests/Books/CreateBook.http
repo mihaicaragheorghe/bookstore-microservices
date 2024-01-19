@@ -1,5 +1,5 @@
 @host = http://localhost:5111
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWEzYTIzZTk3ZTQ0YzQ5N2NiZGNiZSIsImV4cCI6MTcwNTY2MTYwMX0.c-ECoLKLuSYwUdIvtRrU_JYv_-UVh6sxN0MkN68Aj_8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjY1YWEzYTIzZTk3ZTQ0YzQ5N2NiZGNiZSIsImV4cCI6MTcwNTY2NDQ4Nn0.Yszy6Z3HLzwx3OTiDFRmF8lDF0ccw9OQDZozUndqMfA
 
 POST {{host}}/books
 Content-Type: application/json
